@@ -2,6 +2,18 @@
  * Created by sosoneo on 2018/2/8.
  */
 
+// 兼容处理
+window.requestAnimFrame = (function() {
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+            window.setTimeout(callback, 1000 / 60);
+        };
+})();
+
 var canvas = document.getElementById('wave');
 var ctx = canvas.getContext('2d');
 // 中点坐标
